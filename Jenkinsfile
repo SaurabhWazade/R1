@@ -9,9 +9,7 @@ stages {
 
 stage ('one') {
 steps {
-sh """aws s3 mb s3://kakaji789456123 --region ap-south-1
-
-aws s3 cp /root/project/target/LoginWebApp.war s3://kakaji789456123"""
+sh """scp -i /hey.pem /root/project/target/LoginWebApp.war ec2-user@172.31.1.146:/mnt/servers/apache-tomcat-11.0.13/webapps"""
 }
 }
 
