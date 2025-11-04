@@ -6,6 +6,23 @@ pipeline {
     }
 
     stages {
+        stage('Clone Repository') {
+            steps {
+                sh '''
+                    git clone https://github.com/SaurabhWazade/project.git
+                '''
+            }
+        }
+
+        stage('Build with Maven') {
+            steps {
+                dir('project') {
+                    sh '''
+                        mvn clean package
+                    '''
+                }
+            }
+        }
 
         stage('Deploy WAR') {
             steps {
