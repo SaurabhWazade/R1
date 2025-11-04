@@ -6,7 +6,6 @@ label "QA"
 }
 tools {
   maven 'apache-maven-3.9.11'
-  jdk 'JDK17'
 }
 
 stages {
