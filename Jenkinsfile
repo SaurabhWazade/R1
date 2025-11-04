@@ -6,14 +6,6 @@ pipeline {
     }
 
     stages {
-        stage('Clone Repository') {
-            steps {
-                sh '''
-                    rm -rf project
-                    git clone https://github.com/SaurabhWazade/project.git
-                '''
-            }
-        }
 
         stage('Build with Maven') {
             steps {
