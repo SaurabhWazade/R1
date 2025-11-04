@@ -9,8 +9,10 @@ stages {
 
 stage ('one') {
 steps {
-sh """sudo git clone 
-  sudo cp /root/.jenkins/workspace/safsf/project/target/LoginWebApp.war /mnt/servers/apache-maven-11.0.13/webapps/ """
+sh """sudo git clone https://github.com/SaurabhWazade/project.git
+sudo cd /root/.jenkins/workspace/safsf/project/
+sudo mvn clean package
+sudo cp /root/.jenkins/workspace/safsf/project/target/LoginWebApp.war /mnt/servers/apache-maven-11.0.13/webapps/ """
 }
 }
 
