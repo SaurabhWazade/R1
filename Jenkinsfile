@@ -7,20 +7,10 @@ pipeline {
 
     stages {
 
-        stage('Build with Maven') {
-            steps {
-                dir('project') {
-                    sh '''
-                        mvn clean package
-                    '''
-                }
-            }
-        }
-
         stage('Deploy WAR') {
             steps {
                 sh '''
-                    sudo cp project/target/LoginWebApp.war /mnt/servers/apache-tomcat-11.0.13/webapps/
+                    sudo cp project/target/LoginWebApp.war /mnt/servers/apache-tomcat-10.1.48/webapps/
                 '''
             }
         }
