@@ -26,8 +26,8 @@ pipeline {
                 }
             }
             steps {
-                sh "rm -rf *"
-                sh "git clone ${PROJECT_URL}"
+                sh "sudo rm -rf *"
+                sh "sudo git clone ${PROJECT_URL}"
             }
         }
 
@@ -39,8 +39,8 @@ pipeline {
                 }
             }
             steps {
-                sh "rm -rf /home/velocity/.m2"
-                sh "cd project && mvn clean install -DskipTests=true"
+                sh "sudo rm -rf /home/velocity/.m2"
+                sh "cd project && sudo mvn clean install -DskipTests=true"
             }
         }
 
@@ -52,8 +52,8 @@ pipeline {
                 }
             }
             steps {
-                sh "rm -rf /mnt/wars/*"
-                sh "cp project/target/LoginWebApp.war /mnt/wars"
+                sh "sudo rm -rf /mnt/wars/*"
+                sh "sudo cp project/target/LoginWebApp.war /mnt/wars"
             }
         }
 
@@ -69,11 +69,11 @@ pipeline {
                 }
             }
             steps {
-                sh """scp LoginWebApp.war velocity@${DEV_IP}:/mnt/wars
-                    unzip LoginWebApp.war
-	     	    rm -rf LoginWebApp.war
-		    sed -i 's|localhost|velocity|g' userRegistration.jsp
-		    zip -r LoginWebApp.war * """
+                sh """sudo scp LoginWebApp.war velocity@${DEV_IP}:/mnt/wars
+                    sudo unzip LoginWebApp.war
+	     	    sudo rm -rf LoginWebApp.war
+		    sudo sed -i 's|localhost|velocity|g' userRegistration.jsp
+		    sudo zip -r LoginWebApp.war * """
 
             }
         }
@@ -86,11 +86,11 @@ pipeline {
                 }
             }
             steps {
-                sh """scp LoginWebApp.war velocity@${QA_IP}:/mnt/wars
-                      unzip LoginWebApp.war
-	     	      rm -rf LoginWebApp.war
-		      sed -i 's|localhost|velocity|g' userRegistration.jsp
-		      zip -r LoginWebApp.war * """
+                sh """sudo scp LoginWebApp.war velocity@${QA_IP}:/mnt/wars
+                      sudo unzip LoginWebApp.war
+	     	      sudo rm -rf LoginWebApp.war
+		      sudo sed -i 's|localhost|velocity|g' userRegistration.jsp
+		      sudo zip -r LoginWebApp.war * """
             }
         }
 
@@ -106,8 +106,8 @@ pipeline {
                 }
             }
             steps {
-                sh "rm -rf *"
-                sh "git clone ${COMPOSE_URL}"
+                sh "sudo rm -rf *"
+                sh "sudo git clone ${COMPOSE_URL}"
             }
         }
 
@@ -119,7 +119,7 @@ pipeline {
                 }
             }
             steps {
-                sh "cd ${COMPOSE_DIR} && sudo docker-compose up -d"
+                sh "sudo cd ${COMPOSE_DIR} && sudo docker-compose up -d"
             }
         }
 
@@ -135,8 +135,8 @@ pipeline {
                 }
             }
             steps {
-                sh "rm -rf *"
-                sh "git clone ${COMPOSE_URL}"
+                sh "sudo rm -rf *"
+                sh "sudo git clone ${COMPOSE_URL}"
             }
         }
 
