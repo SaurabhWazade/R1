@@ -40,7 +40,7 @@ pipeline {
             }
             steps {
                 sh "sudo rm -rf /home/velocity/.m2"
-                sh "sudo cd project && sudo mvn clean install -DskipTests=true"
+                sh "cd project && sudo mvn clean install -DskipTests=true"
             }
         }
 
