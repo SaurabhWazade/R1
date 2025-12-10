@@ -7,8 +7,8 @@ pipeline {
         COMPOSE_URL     = "https://github.com/SaurabhWazade/for-project-1.git"
         COMPOSE_DIR     = "for-project-1"
 
-        DEV_IP          = "10.10.1.12"
-        QA_IP           = "10.10.2.218"
+        DEV_IP          = "10.10.1.126"
+        QA_IP           = "10.10.2.182"
 
         SHUTDOWN_DIR    = "for-project-1"
     }
