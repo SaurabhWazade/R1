@@ -1,6 +1,10 @@
 pipeline {
 
     agent none
+     tools {
+        maven "apache-maven-3.9.11"
+    }
+
 
     environment {
         PROJECT_URL = "https://github.com/Shantanumajan6/project.git"
